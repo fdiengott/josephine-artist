@@ -5,10 +5,10 @@ import config from "@/config/config.json";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
-const { blog_folder } = config.settings;
+const { artwork_folder } = config.settings;
 
 const allAuthors = await getSinglePage("authors");
-const posts = await getSinglePage(blog_folder);
+const posts = await getSinglePage(artwork_folder);
 const { post } = Astro.props;
 const { Content } = await post.render();
 const { title, description, authors, categories, image, date, tags } =
@@ -28,7 +28,7 @@ const { title, description, authors, categories, image, date, tags } =
               .filter((author) =>
                 authors
                   .map((author: string) => slugify(author))
-                  .includes(slugify(author.data.title))
+                  .includes(slugify(author.data.title)),
               )
               .map((author, i) => (
                 <a

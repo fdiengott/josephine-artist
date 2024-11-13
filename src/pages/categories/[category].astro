@@ -1,6 +1,6 @@
 ---
 import BlogCategories from "@/components/blog/BlogCategories.astro";
-import Blogs from "@/components/Blogs.astro";
+import Works from "@/components/Works.astro";
 import PageHeader from "@/components/PageHeader.astro";
 import Shape from "@/components/Shape.astro";
 import config from "@/config/config.json";
@@ -10,10 +10,13 @@ import { getTaxonomy } from "@/lib/taxonomyParser.astro";
 import taxonomyFilter from "@/lib/utils/taxonomyFilter";
 import { slugify, humanize } from "@/lib/utils/textConverter";
 
-const categories = await getTaxonomy(config.settings.blog_folder, "categories");
+const categories = await getTaxonomy(
+  config.settings.artwork_folder,
+  "categories",
+);
 export async function getStaticPaths() {
   const categories = await getTaxonomy(
-    config.settings.blog_folder,
+    config.settings.artwork_folder,
     "categories",
   );
   return categories.map((item) => {
@@ -30,7 +33,7 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 const { item } = Astro.props;
 
-const posts = await getSinglePage(config.settings.blog_folder);
+const posts = await getSinglePage(config.settings.artwork_folder);
 const filterByTags = taxonomyFilter(posts, "categories", category);
 const page_data = {
   index_title: "Categories",
@@ -53,7 +56,7 @@ const page_data = {
   <section class="section">
     <div class="container">
       <BlogCategories categories={categories} />
-      <Blogs posts={filterByTags} />
+      <Works posts={filterByTags} />
     </div>
   </section>
 </Base>
