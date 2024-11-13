@@ -1,8 +1,9 @@
 ---
 import { markdownify } from "@/lib/utils/textConverter";
+// import Blob from "@/layouts/decorations/blob-haikei.astro";
 import { Image } from "astro:assets";
 const { banner } = Astro.props;
-const { title, button, image, content } = banner;
+const { title, image, content } = banner;
 ---
 
 <section class="section banner relative">
@@ -12,14 +13,6 @@ const { title, button, image, content } = banner;
         <h1 class="banner-title" set:html={markdownify(title)} />
 
         <p class="mt-6" set:html={markdownify(content)} />
-
-        {
-          button.enable && (
-            <a class="btn btn-white mt-8" href={button.link}>
-              {button.label}
-            </a>
-          )
-        }
       </div>
       <div class="lg:col-6">
         <Image
@@ -32,6 +25,8 @@ const { title, button, image, content } = banner;
       </div>
     </div>
   </div>
+
+  <!-- <Blob /> -->
 
   <Image
     class="banner-shape absolute -top-28 right-0 -z-[1] w-full max-w-[30%]"

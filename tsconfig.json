@@ -13,6 +13,7 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@/components/*": ["./src/layouts/components/*"],
+      "@/icons/*": ["./src/layouts/icons/*"],
       "@/shortcodes/*": ["./src/layouts/shortcodes/*"],
       "@/helpers/*": ["./src/layouts/helpers/*"],
       "@/partials/*": ["./src/layouts/partials/*"],

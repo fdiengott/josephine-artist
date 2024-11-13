@@ -1,0 +1,8 @@
+---
+const { works } = Astro.props;
+import Work from "../Work.astro";
+---
+
+<div class="featured-works row">
+  {works.map((work: any) => <Work item={work} featured={true} />)}
+</div>

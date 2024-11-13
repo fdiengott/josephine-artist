@@ -1,0 +1,30 @@
+---
+import FeaturedWorks from "@/components/featured-works/FeaturedWorks.astro";
+import Works from "@/components/Works.astro";
+import Pagination from "@/components/Pagination.astro";
+
+import { sortByDate } from "@/lib/utils/sortFunctions";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import config from "@/config/config.json";
+const { artwork_folder } = config.settings;
+const works = await getSinglePage(artwork_folder);
+const sortedWorks = sortByDate(works);
+const featuredWorks = sortedWorks.filter((item) => item.data.featured);
+const recentWorks = sortedWorks.filter((item) => !item.data.featured);
+const currentWorks = recentWorks.slice(0, config.settings.pagination);
+const totalPages = Math.ceil(recentWorks.length / config.settings.pagination);
+---
+
+<section class="section">
+  <div class="container">
+    <h2 class="h4 mb-4">Featured Works</h2>
+    <FeaturedWorks works={featuredWorks} />
+    <h2 class="h4 mb-4 mt-8">Recent Pieces</h2>
+    <Works works={currentWorks} />
+    <Pagination
+      section={artwork_folder}
+      currentPage={1}
+      totalPages={totalPages}
+    />
+  </div>
+</section>

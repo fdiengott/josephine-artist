@@ -1,4 +1,4 @@
 ---
-title: "Blog"
-page_title: Insight and advice from <br /> our expert team.
+title: "Artwork"
+page_title: A gallery of my artwork
 ---
