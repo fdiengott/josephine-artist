@@ -18,8 +18,8 @@ import CalendarIcon from "@/icons/CalendarIcon.astro";
 const { item, featured } = Astro.props;
 ---
 
-<div class={featured ? "mb-8 featured md:col-6" : "mb-8 md:col-6 lg:col-4"}>
-  <div class="card">
+<div class={featured ? "mb-8 md:col-6" : "mb-8 md:col-6 lg:col-4"}>
+  <div class={"card" + (featured ? " featured" : "")}>
     <Image
       class="card-img"
       width={featured ? 533 : 335}
@@ -31,7 +31,7 @@ const { item, featured } = Astro.props;
       <h3 class="h4 card-title">
         <a href={`/works/${item.slug}`}>{item.data.title}</a>
       </h3>
-      <div class="card-footer mt-6 flex space-x-4">
+      <div class="card-footer flex space-x-4">
         <span class="inline-flex items-center text-xs text-[#666]">
           <CalendarIcon />
           {dateFormat(item.data.date)}

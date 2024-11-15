@@ -26,8 +26,8 @@ const getData = (folder) => {
   return publishedPages;
 };
 
-// get post data
-const posts = getData(`src/content/posts`);
+// get artwork data
+const artwork = getData(`src/content/works`);
 
 try {
   // creare folder if it doesn't exist
@@ -35,8 +35,8 @@ try {
     fs.mkdirSync(jsonDir);
   }
 
-  // create posts.json file
-  fs.writeFileSync(`${jsonDir}/posts.json`, JSON.stringify(posts));
+  // create artwork.json file
+  fs.writeFileSync(`${jsonDir}/artwork.json`, JSON.stringify(artwork));
 } catch (err) {
   console.error(err);
 }
