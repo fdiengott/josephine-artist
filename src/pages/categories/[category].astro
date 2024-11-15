@@ -33,8 +33,8 @@ export async function getStaticPaths() {
 const { category } = Astro.params;
 const { item } = Astro.props;
 
-const posts = await getSinglePage(config.settings.artwork_folder);
-const filterByTags = taxonomyFilter(posts, "categories", category);
+const pieces = await getSinglePage(config.settings.artwork_folder);
+const filterByTags = taxonomyFilter(pieces, "categories", category);
 const page_data = {
   index_title: "Categories",
   slug: item,

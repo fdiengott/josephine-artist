@@ -1,23 +1,23 @@
 ---
 import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
-import BlogSingle from "@/layouts/BlogSingle.astro";
+import ArtworkDetails from "@/layouts/ArtworkDetails.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 
 export async function getStaticPaths() {
-  const posts = await getSinglePage(config.settings.artwork_folder);
+  const pieces = await getSinglePage(config.settings.artwork_folder);
 
-  const paths = posts.map((post: any) => ({
+  const paths = pieces.map((work: any) => ({
     params: {
-      single: post.slug,
+      single: work.slug,
     },
-    props: { post },
+    props: { work },
   }));
   return paths;
 }
 
-const { post } = Astro.props;
-const { title, meta_title, description, image } = post.data;
+const { work } = Astro.props;
+const { title, meta_title, description, image } = work.data;
 ---
 
 <Base
@@ -26,5 +26,5 @@ const { title, meta_title, description, image } = post.data;
   description={description}
   image={image}
 >
-  <BlogSingle post={post} />
+  <ArtworkDetails work={work} />
 </Base>
