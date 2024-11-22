@@ -17,6 +17,11 @@ const page_data = {
   .row {
     justify-content: center;
   }
+
+  input,
+  textarea {
+    border: 1px solid #ccc;
+  }
 </style>
 
 <Base
@@ -33,7 +38,7 @@ const page_data = {
     <div class="container">
       <div class="row">
         <div class="md:col-6 md:order-1">
-          <form action={contact_form_action} method="POST">
+          <form data-netlify="true" name="contact" method="POST">
             <div class="form-group mb-5">
               <label class="form-label" for="name">Full Name</label>
               <input
@@ -44,23 +49,23 @@ const page_data = {
               />
             </div>
             <div class="form-group mb-5">
-              <label class="form-label" for="eamil">Email Adrdess</label>
+              <label class="form-label" for="eamil">Email Address</label>
               <input
                 class="form-control"
                 type="text"
                 id="email"
-                placeholder="Your  Email Address"
+                placeholder="Your Email Address"
               />
             </div>
-            <div class="form-group mb-5">
-              <label class="form-label" for="reason">Reason/Purpose</label>
-              <select name="reason" id="reason" class="form-select" required>
-                <option value="">Select reason/purpose</option>
-                <option value="investment plane">Investment Plan</option>
-                <option value="investment plane-2">Investment Plan 2</option>
-                <option value="investment plane-3">Investment Plan 3</option>
-              </select>
-            </div>
+            <!-- <div class="form-group mb-5"> -->
+            <!--   <label class="form-label" for="reason">Reason/Purpose</label> -->
+            <!--   <select name="reason" id="reason" class="form-select" required> -->
+            <!--     <option value="">Select reason/purpose</option> -->
+            <!--     <option value="investment plane">Investment Plan</option> -->
+            <!--     <option value="investment plane-2">Investment Plan 2</option> -->
+            <!--     <option value="investment plane-3">Investment Plan 3</option> -->
+            <!--   </select> -->
+            <!-- </div> -->
             <div class="form-group mb-5">
               <label class="form-label" for="message">Message Here</label>
               <textarea
